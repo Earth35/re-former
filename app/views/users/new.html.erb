@@ -36,5 +36,16 @@
     <%= f.label(:pasword, "Password (6-30 characters):") %>
     <%= f.password_field(:password) %><br/>
     <%= f.submit("Submit") %>
+    
+    <% if @user.errors.any? %>
+      <div id="errors">
+        <h3><%= pluralize(@user.errors.count, "error") %> prohibited this form from being submitted:</h3>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 </div>
